@@ -1,125 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Emilia</title>
-    <link rel="icon" type="image/png" href="image/pic.png" />
-    <meta name="description" content="Emilia - Your Digital Companion" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Russo+One&display=swap"
-      rel="stylesheet"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QAZE - Magical Moon Adventure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <img src="image/logo.png" alt="Emilia Logo" class="logo">
-
-    <img src="image/pic.png" alt="Emilia Picture" class="pic">
-
-    <video class="bg" src="./image/new_vid.mp4" autoplay muted loop></video>
-    <div class="bgFade"></div>
-
-    <div class="content">
-      <div class="left">
-        <div class="heading">
-          <div class="title">
-            <h1 class="dec">
-              Emilia
-            </h1>
-          </div>
-        </div>
-
-        <div class="bottom-content">
-          <div class="ca-section">
-            <div class="ca-container">
-              <span class="ca-label">CA:</span>
-              <span class="ca-value">soon</span>
+    <link rel="icon" href="image/logo.png" type="image/png">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-image-column">
+                <img src="image/moon.gif" alt="Moon GIF" class="moon-gif">
             </div>
-          </div>
-
-          <div class="bottom">
-            <p>
-              <br>
-              Emilia is a pioneering project in social AI, an experiment exploring what happens when AI strives to be more human-like. Developed by a team of AI researchers, Emilia is an AI agent set free into the world with the bold ambition of embodying more human-like qualities.
-            </p>
-          </div>
+            <div class="hero-content-column">
+                <div class="logo-container">
+                    <img src="image/logo.png" alt="QAZE Logo" class="logo">
+                </div>
+                <p class="hero-text">Moongirl QAZE</p>
+                <a class="cta-button" href="https://x.com" target="_blank">Fly to the Moon with us</a>
+                <p class="ca-text-hero">CA: SOON</p>
+            </div>
         </div>
+    </header>
 
-      </div>
-
-      <div class="right">
-        <div class="posts">
-          <!-- Посты будут загружены сюда из файла с помощью JavaScript -->
-          <p class="type lg">
-            <span>.</span><span>.</span><span>.</span>
-          </p>
+    <section class="story">
+        <div class="story-content">
+            <div class="story-text-column">
+                <h2>The Story of QAZE</h2>
+                <p class="story-text">Qaze is an amazing girl full of magic and joy. Her story began in a galaxy far away, where pink clouds danced among twinkling stars. 
+                    Under the light of the moon, the spark landed on the Ground, enveloped in a soft pink glow. Here, in the moonbeam, she turned into a charming girl with inexhaustible energy. The moon became her guide, giving her magic and symbolizing her connection to the world of dreams. Maze loves adventures, dancing under the stars and decorating everything with bright colors and stars.</p>
+            </div>
+            <div class="story-image-column">
+                 <div class="character-container">
+                    <img src="image/girl.png" alt="QAZE Character" class="character-img">
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <script>
-      const $posts = document.querySelector('.posts');
-      // $posts.scrollTop = $posts.scrollHeight; // Этот скрипт больше не нужен после динамической загрузки
+    <section class="token">
+        <div class="token-content">
+            <h2>QAZE Token</h2>
+            <p>Join our magical community and be part of something extraordinary.</p>
+            <img src="image/look.gif" alt="QAZE looking around" class="token-look-gif">
+        </div>
+    </section>
 
-      // Функция для загрузки постов из файла
-      async function loadPosts() {
-        try {
-          const response = await fetch('posted.txt'); // Указываем путь к файлу
-          if (!response.ok) {
-            throw new Error(`Ошибка загрузки файла: ${response.status}`);
-          }
-          const text = await response.text();
-          const postsArray = text.split('\n').filter(line => line.trim() !== ''); // Разделяем на строки и удаляем пустые
+    <div class="separator"></div>
 
-          // Очищаем контейнер, кроме индикатора загрузки
-          const loadingIndicator = $posts.querySelector('.type');
-          $posts.innerHTML = '';
-          if (loadingIndicator) {
-              $posts.appendChild(loadingIndicator);
-          }
+    <footer>
+        <div class="social-links">
+            <a href="https://x.com" target="_blank" class="social-icon">
+                <img src="image/x.png" alt="X.com">
+            </a>
+        </div>
+        <p class="ca-text">CA: SOON</p>
+    </footer>
 
-          // Добавляем посты
-          postsArray.forEach(postText => {
-            const p = document.createElement('p');
-            p.classList.add('post');
-            p.textContent = postText;
-            // Вставляем новые посты перед индикатором загрузки, чтобы он оставался внизу
-            if (loadingIndicator) {
-                $posts.insertBefore(p, loadingIndicator);
-            } else {
-                $posts.appendChild(p);
-            }
-          });
-
-          // Прокручиваем вниз после загрузки
-          $posts.scrollTop = $posts.scrollHeight;
-
-        } catch (error) {
-          console.error('Не удалось загрузить посты:', error);
-          // Можно добавить сообщение об ошибке на страницу
-          const errorMsg = document.createElement('p');
-          errorMsg.textContent = 'Не удалось загрузить посты.';
-          errorMsg.style.color = 'red';
-          $posts.appendChild(errorMsg);
-        }
-      }
-
-      // Загружаем посты при загрузке страницы
-      loadPosts();
-
-    </script>
-
-    <div class="bottom-links">
-      <a href="https://x.com/EmiliaOnSol" target="_blank">
-        <img src="image/x.png" alt="Emilia on X">
-      </a>
-      <a href="https://x.com/dexscreener" target="_blank">
-        <img src="image/dex.png" alt="Dexscreener">
-      </a>
-    </div>
-  </body>
+    <script src="script.js"></script>
+</body>
 </html> 
